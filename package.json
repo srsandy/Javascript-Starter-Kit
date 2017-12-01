@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "prestart": "babel-node build/startMessage.js",
     "start": "npm-run-all --parallel security-check open:src",
-    "open:src": "node build/srcServer.js",
+    "open:src": "babel-node build/srcServer.js",
     "security-check": "nsp check",
-    "share": "lt --port 3000"
+    "localtunnel": "lt --port 3000",
+    "share": "npm-run-all --parallel open:src localtunnel"
   },
   "repository": {
     "type": "git",
